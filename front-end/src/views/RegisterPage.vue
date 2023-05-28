@@ -96,7 +96,6 @@ export default {
   },
   methods: {
     submitForm() {
-      /*
       registrationService
         .register(this.form)
         .then(() => {
@@ -105,7 +104,6 @@ export default {
         .catch((error) => {
           this.errorMessage = "Failed to register user. " + error.message;
         });
-      */
     },
   },
 };
