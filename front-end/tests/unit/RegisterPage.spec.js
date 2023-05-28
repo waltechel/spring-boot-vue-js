@@ -3,7 +3,7 @@ import RegisterPage from "@/views/RegisterPage";
 import VueRouter from 'vue-router';
 
 // vm.$router에 접근할 수 있도록
-// 테스트에 Vue Router 추가하
+// 테스트에 Vue Router 추가
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 const router = new VueRouter()
@@ -54,7 +54,7 @@ describe("RegisterPage.vue", () => {
   });
 
   // 폼의 입력과 데이터 바인딩을 검증하는 테스트
-  it("should have form inputs bound with data model", () => {
+  it("should have form inputs bound with data model", async () => {
     const username = "sunny";
     const emailAddress = "sunny@local";
     const password = "VueJsRocks!";
@@ -62,6 +62,7 @@ describe("RegisterPage.vue", () => {
     wrapper.vm.form.username = username;
     wrapper.vm.form.emailAddress = emailAddress;
     wrapper.vm.form.password = password;
+    await wrapper.vm.$nextTick();
     expect(fieldUsername.element.value).toEqual(username);
     expect(fieldEmailAddress.element.value).toEqual(emailAddress);
     expect(fieldPassword.element.value).toEqual(password);
@@ -70,8 +71,9 @@ describe("RegisterPage.vue", () => {
   // 제출 핸들러의 존재 여부를 확인하는 테스트
   it("should have form submit event handler `submitForm`", () => {
     const stub = jest.fn();
-    wrapper.setMethods({ submitForm: stub });
-    buttonSubmit.trigger("submit");
+    wrapper.setMethods({ submitForm: stub }); // Use `setMethods` to set the method
+    // wrapper.vm.$options.methods.submitForm = stub;
+    wrapper.find("form").trigger("submit");
     expect(stub).toBeCalled();
   });
 

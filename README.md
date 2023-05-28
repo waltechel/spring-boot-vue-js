@@ -47,3 +47,29 @@ The following files have been auto-fixed:
 
  DONE  All lint errors auto-fixed.
 ```
+- 다음 명령어로 axios와 axios의 모의 객체 라이브러리인 moxios를 설치하도록 한다.
+```powershell
+npm install axios --save
+npm install moxios --save-dev
+```
+- 다음 명령어로 Jest 의 에러를 잡을 수 있다.
+```powershell
+npm install @babel/core
+npm install @babel/preset-env
+npm install @babel/plugin-transform-modules-commonjs
+npm install @babel/plugin-transform-runtime
+```
+
+```javascript
+module.exports = {
+  presets: ["@babel/preset-env"],
+  env: {
+    test: {
+      plugins: [
+        '@babel/plugin-transform-modules-commonjs',
+        '@babel/plugin-transform-runtime'
+      ]
+    }
+  }
+}
+```

@@ -82,6 +82,8 @@
   </div>
 </template>
 <script>
+import registrationService from '@/services/registration';
+
 export default {
   name: "RegisterPage",
   data() {
