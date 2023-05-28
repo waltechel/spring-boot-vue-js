@@ -13,5 +13,10 @@ export default new Router({
       name: "LoginPage",
       component: LoginPage,
     },
+    {
+      path: '/register',
+      name: 'RegisterPage',
+      component: RegisterPage
+    },
   ],
 });
