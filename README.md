@@ -73,3 +73,11 @@ module.exports = {
   }
 }
 ```
+
+### 프런트엔드 검증
+
+다음 명령어로 Vuelidate를 설치한다.
+
+```powershell
+npm install vuelidate --save
+```
