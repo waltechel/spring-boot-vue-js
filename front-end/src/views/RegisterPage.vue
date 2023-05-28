@@ -11,21 +11,39 @@
           <div class="tagline">Open source task management tool</div>
         </div>
         <!-- 회원 가입 폼 -->
-        <form>
+        <form @submit.prevent="submitForm">
+          <div v-show="errorMessage" class="alert alert-danger failed">
+            {{ errorMessage }}
+          </div>
           <!-- 사용자명 입력 -->
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" />
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              v-model="form.username"
+            />
           </div>
           <!-- 이메일 주소 입력 -->
           <div class="form-group">
             <label for="emailAddress">Email address</label>
-            <input type="email" class="form-control" id="emailAddress" />
+            <input
+              type="email"
+              class="form-control"
+              id="emailAddress"
+              v-model="form.emailAddress"
+            />
           </div>
           <!-- 비밀번호 입력 -->
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" />
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              v-model="form.password"
+            />
           </div>
           <!-- 계정 생성 버튼 -->
           <button type="submit" class="btn btn-primary btn-block">
@@ -66,6 +84,30 @@
 <script>
 export default {
   name: "RegisterPage",
+  data() {
+    return {
+      form: {
+        username: "",
+        emailAddress: "",
+        password: "",
+      },
+      errorMessage: "",
+    };
+  },
+  methods: {
+    submitForm() {
+      /*
+      registrationService
+        .register(this.form)
+        .then(() => {
+          this.$router.push({ name: "LoginPage" });
+        })
+        .catch((error) => {
+          this.errorMessage = "Failed to register user. " + error.message;
+        });
+      */
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
