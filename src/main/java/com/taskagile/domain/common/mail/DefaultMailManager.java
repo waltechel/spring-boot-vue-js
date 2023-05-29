@@ -25,7 +25,15 @@ public class DefaultMailManager implements MailManager {
   
   private final Mailer mailer;
   private final Configuration configuration;
-
+  
+  public DefaultMailManager(@Value("${app.mail-from}") String mailFrom,
+        Mailer mailer,
+        Configuration configuration) {
+    this.mailFrom = mailFrom;
+    this.mailer = mailer;
+    this.configuration = configuration;
+  }
+  
   @Override
   public void send(String emailAddress, String subject, String template, MessageVariable... variables) {
     Assert.hasText(emailAddress, "Parameter `emailAddress` must not be blank");
@@ -52,5 +60,7 @@ public class DefaultMailManager implements MailManager {
       return null;
     }
   }
+
+
 
 }

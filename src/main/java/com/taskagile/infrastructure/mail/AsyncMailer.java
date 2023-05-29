@@ -2,6 +2,9 @@ package com.taskagile.infrastructure.mail;
 
 import com.taskagile.domain.common.mail.Mailer;
 import com.taskagile.domain.common.mail.Message;
+
+import lombok.RequiredArgsConstructor;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,15 +16,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 @Component
+@RequiredArgsConstructor
 public class AsyncMailer implements Mailer {
 
   private static final Logger log = LoggerFactory.getLogger(AsyncMailer.class);
 
-  private JavaMailSender mailSender;
-
-  public AsyncMailer(JavaMailSender mailSender) {
-    this.mailSender = mailSender;
-  }
+  private final JavaMailSender mailSender;
 
   @Async
   @Override
