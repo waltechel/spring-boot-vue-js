@@ -103,6 +103,6 @@ public class DefaultMailManagerTests {
     Assertions.assertEquals(to, messageSent.getTo());
     Assertions.assertEquals(subject, messageSent.getSubject());
     Assertions.assertEquals("noreply@taskagile.com", messageSent.getFrom());
-    Assertions.assertEquals("Hello, test\n", messageSent.getBody());
+    Assertions.assertEquals("Hello, test", messageSent.getBody());
   }
 }
