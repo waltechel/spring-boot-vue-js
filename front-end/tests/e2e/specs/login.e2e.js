@@ -3,7 +3,7 @@ module.exports = {
     browser
       .url(process.env.VUE_DEV_SERVER_URL + "login")
       .waitForElementVisible("#app", 5000)
-      .assert.attributeContains(".logo", "src", "/static/images/logo.png")
+      .assert.attributeContains('.logo', 'src', '/static/images/logo.png')
       .end();
   },
 };
