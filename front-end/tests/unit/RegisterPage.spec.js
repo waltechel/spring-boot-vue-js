@@ -100,7 +100,7 @@ describe("RegisterPage.vue", () => {
     wrapper.vm.submitForm();
     expect(registerSpy).toBeCalled();
     await wrapper.vm.$nextTick();
-    expect(stub).toHaveBeenCalledWith({ name: "LoginPage" });
+    expect(stub).toHaveBeenCalledWith({ name: "login" });
   });
 
   // 회원가입 실패를 검증하는 테스트(여기가 틀리는데 사실 원인을 몰라서 넘어감)
