@@ -1,15 +1,11 @@
 <template>
   <!-- 컴포넌트의 루트 요소 -->
-  <div class="container">
+  <div class="container public">
     <!-- 가운데 정렬을 위한 row -->
     <div class="row justify-content-center">
       <!-- 회원 가입 폼을 담은 컨테이너 -->
-      <div class="register-form">
-        <!-- 로고와 태그라인 -->
-        <div class="logo-wrapper">
-          <img class="logo" src="/static/images/logo.png" />
-          <div class="tagline">Open source task management tool</div>
-        </div>
+      <div class="form">
+        <Logo />
         <!-- 회원 가입 폼 -->
         <form @submit.prevent="submitForm">
           <div v-show="errorMessage" class="alert alert-danger failed">
@@ -103,30 +99,7 @@
         </form>
       </div>
     </div>
-    <!-- 페이지 하단의 푸터 -->
-    <footer class="footer">
-      <!-- 저작권 정보 -->
-      <span class="copyright">&copy; 2023 TaskAgile.com</span>
-      <!-- 푸터 링크들 -->
-      <ul class="footer-links list-inline float-right">
-        <li class="list-inline-item">
-          <a href="#">About</a>
-        </li>
-        <li class="list-inline-item">
-          <a href="#">Terms of Service</a>
-        </li>
-        <li class="list-inline-item">
-          <a href="#">Privacy Policy</a>
-        </li>
-        <li class="list-inline-item">
-          <a
-            href="https://github.com/taskagile/vuejs.spring-boot.mysql"
-            target="_blank"
-            >GitHub</a
-          >
-        </li>
-      </ul>
-    </footer>
+    <PageFooter />
   </div>
 </template>
 <script>
@@ -138,6 +111,8 @@ import {
   alphaNum,
 } from "vuelidate/lib/validators";
 import registrationService from "@/services/registration";
+import Logo from "@/components/Logo.vue";
+import PageFooter from "@/components/PageFooter.vue";
 
 export default {
   name: "RegisterPage",
@@ -150,6 +125,10 @@ export default {
       },
       errorMessage: "",
     };
+  },
+  components: {
+    Logo,
+    PageFooter,
   },
   validations: {
     form: {
@@ -191,46 +170,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.container {
-  max-width: 900px;
-}
-.register-form {
-  margin-top: 50px;
-  max-width: 320px;
-}
-.logo-wrapper {
-  text-align: center;
-  margin-bottom: 40px;
-  .tagline {
-    line-height: 180%;
-    color: #666;
-  }
- .logo {
-    max-width: 150px;
-    margin: 0 auto;
-  }
-}
-.register-form {
-  .form-group label {
-    font-weight: bold;
-    color: #555;
-  }
-  .accept-terms {
-    margin: 20px 0 40px 0;
-  }
-}
-.footer {
-  width: 100%;
-  font-size: 13px;
-  color: #666;
-  line-height: 40px;
-  border-top: 1px solid #ddd;
-  margin-top: 50px;
-  .list-inline-item {
-    margin-right: 10px;
-  }
-  a {
-    color: #666;
-  }
+.accept-terms {
+  margin: 20px 0 40px 0;
 }
 </style>
