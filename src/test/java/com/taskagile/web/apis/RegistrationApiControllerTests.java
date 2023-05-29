@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.taskagile.config.SecurityConfiguration;
 import com.taskagile.domain.application.UserService;
 import com.taskagile.domain.model.user.EmailAddressExistsException;
 import com.taskagile.domain.model.user.UsernameExistsException;
@@ -22,7 +24,9 @@ import com.taskagile.utils.JsonUtils;
 import com.taskagile.web.payload.RegistrationPayload;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(RegistrationApiController.class)
+// 커스텀 설정을 적용하려면 다음과 같이 @ContextConfiguration 설정을 적용하여야 한다. 
+@ContextConfiguration(classes = {SecurityConfiguration.class, RegistrationApiController.class})
+@WebMvcTest
 public class RegistrationApiControllerTests {
 
   @Autowired
