@@ -1,4 +1,5 @@
 import axios from "axios";
+import errorParser from "@/utils/error-parser";
 
 export default {
   /**
@@ -13,7 +14,7 @@ export default {
           resolve(data);
         })
         .catch((error) => {
-          reject(error);
+          reject(errorParser.parse(error));
         });
     });
   },

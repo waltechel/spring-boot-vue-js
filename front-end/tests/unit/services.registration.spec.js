@@ -36,26 +36,28 @@ describe("services/registration", () => {
       let request = moxios.requests.mostRecent();
       expect(request).toBeTruthy();
       request.reject({
-        status: 400,
-        response: { message: "Bad request" },
+        response: {
+          status: 400,
+          response: { message: "Bad request" },
+        },
       });
     });
     return registrationService.register().catch((error) => {
-      expect(error.response.message).toEqual("Bad request");
+      expect(error.message).toEqual("Bad request");
     });
   });
 
   // 누락된 테스트 추가
-  it('should call `/registrations` API', () => {
-    expect.assertions(1)
+  it("should call `/registrations` API", () => {
+    expect.assertions(1);
     moxios.wait(() => {
-      let request = moxios.requests.mostRecent()
-      expect(request.url).toEqual('/registrations')
+      let request = moxios.requests.mostRecent();
+      expect(request.url).toEqual("/registrations");
       request.respondWith({
         status: 200,
-        response: {result: 'success'}
-      })
-    })
-    return registrationService.register()
-  })
+        response: { result: "success" },
+      });
+    });
+    return registrationService.register();
+  });
 });

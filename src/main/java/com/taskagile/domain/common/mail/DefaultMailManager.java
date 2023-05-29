@@ -1,9 +1,7 @@
 package com.taskagile.domain.common.mail;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,18 +10,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.util.Assert;
 
-import java.util.HashMap;
-import java.util.Map;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import lombok.NoArgsConstructor;
 
 @Component
-@NoArgsConstructor
 public class DefaultMailManager implements MailManager {
 
   private final static Logger log = LoggerFactory.getLogger(DefaultMailManager.class);
 
-  @Value("${app.mail-from}")
   private String mailFrom;
-  
   private Mailer mailer;
   private Configuration configuration;
   
