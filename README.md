@@ -81,3 +81,11 @@ module.exports = {
 ```powershell
 npm install vuelidate --save
 ```
+
+## 10 스프링 시큐리티 - 애플리케이션 보호하기
+
+다음 명령어로 python SMTP 웹 서버를 구동해볼 수 있다.
+
+```python
+python -m smtpd -n -c DebuggingServer localhost:1025
+```
