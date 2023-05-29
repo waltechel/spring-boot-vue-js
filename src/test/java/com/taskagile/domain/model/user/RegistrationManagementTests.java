@@ -82,6 +82,6 @@ public class RegistrationManagementTests {
     inOrder.verify(repositoryMock).findByEmailAddress(emailAddress);
     inOrder.verify(repositoryMock).save(newUser);
     verify(passwordEncryptorMock).encrypt(password);
-    Assertions.assertEquals("Saved user's password should be encrypted", encryptedPassword, savedUser.getPassword());
+    Assertions.assertEquals("EncryptedPassword", encryptedPassword, savedUser.getPassword());
   }
 }

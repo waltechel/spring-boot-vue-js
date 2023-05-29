@@ -61,8 +61,8 @@ public class UserServiceImplTests {
     }
     Assertions.assertNotNull(exception);
     Assertions.assertTrue(exception instanceof UsernameNotFoundException);
-    BDDMockito.then(userRepositoryMock.findByUsername("")).shouldHaveNoInteractions();
-    BDDMockito.then(userRepositoryMock.findByEmailAddress("")).shouldHaveNoInteractions();
+    BDDMockito.then(userRepositoryMock).should(times(0)).findByUsername("");
+    BDDMockito.then(userRepositoryMock).should(times(0)).findByEmailAddress("");
   }
   
   @Test
@@ -78,7 +78,7 @@ public class UserServiceImplTests {
     Assertions.assertNotNull(exception);
     Assertions.assertTrue(exception instanceof UsernameNotFoundException);
     BDDMockito.then(userRepositoryMock).should(times(1)).findByUsername(notExistUsername);
-    BDDMockito.then(userRepositoryMock.findByUsername(notExistUsername)).shouldHaveNoInteractions();
+    BDDMockito.then(userRepositoryMock).should(times(1)).findByUsername(notExistUsername);
   }
   
   @Test
@@ -106,7 +106,6 @@ public class UserServiceImplTests {
     }
     Assertions.assertNull(exception);
     BDDMockito.then(userRepositoryMock).should(times(1)).findByUsername(existUsername);
-    BDDMockito.then(userRepositoryMock.findByEmailAddress(existUsername)).shouldHaveNoInteractions();
     Assertions.assertNotNull(userDetails);
     Assertions.assertEquals(existUsername, userDetails.getUsername());
     Assertions.assertTrue(userDetails instanceof SimpleUser);

@@ -2,6 +2,7 @@ package com.taskagile.domain.common.mail;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class DefaultMailManager implements MailManager {
 
   private final static Logger log = LoggerFactory.getLogger(DefaultMailManager.class);
@@ -23,8 +24,8 @@ public class DefaultMailManager implements MailManager {
   @Value("${app.mail-from}")
   private String mailFrom;
   
-  private final Mailer mailer;
-  private final Configuration configuration;
+  private Mailer mailer;
+  private Configuration configuration;
   
   public DefaultMailManager(@Value("${app.mail-from}") String mailFrom,
         Mailer mailer,

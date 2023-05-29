@@ -119,7 +119,7 @@ public class HibernateUserRepositoryTests {
     User newUser = User.create(username, emailAddress, "MyPassword!");
     repository.save(newUser);
     User found = repository.findByEmailAddress(emailAddress);
-    Assertions.assertEquals("Username should match", username, found.getUsername());
+    Assertions.assertEquals(username, found.getUsername(), "Username should match");
   }
 
   @Test
@@ -136,6 +136,6 @@ public class HibernateUserRepositoryTests {
     User newUser = User.create(username, emailAddress, "MyPassword!");
     repository.save(newUser);
     User found = repository.findByUsername(username);
-    Assertions.assertEquals("Email address should match", emailAddress, found.getEmailAddress());
+    Assertions.assertEquals(emailAddress, found.getEmailAddress(), "Email address should match");
   }
 }

@@ -22,6 +22,6 @@ public class ApplicationProperties {
    */
   @Email
   @NotBlank
-  private String mailFrom;
+  private String mailFrom = "default@example.com";
 
 }
