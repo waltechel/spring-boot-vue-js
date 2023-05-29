@@ -88,4 +88,11 @@ public class User extends AbstractBaseEntity {
       ", createdDate=" + createdDate +
       '}';
   }
+  
+  public void updateName(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  
+  
 }

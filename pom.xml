@@ -15,7 +15,10 @@
   <name>spring-boot-vue-js</name>
   <description>Demo project for Spring Boot</description>
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>11</java.version>
+    <commons-io.version>2.6</commons-io.version>
   </properties>
   <dependencies>
     <dependency>
@@ -75,6 +78,11 @@
       <artifactId>lombok</artifactId>
       <version>1.18.22</version> <!-- Use the latest version of Lombok -->
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons-io.version}</version>
     </dependency>
   </dependencies>
 
