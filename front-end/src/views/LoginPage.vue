@@ -3,6 +3,7 @@
   <div class="container public">
     <div class="row justify-content-center">
       <div class="form">
+        hello
         <Logo/>
         <form @submit.prevent="submitForm">
           <div v-show="errorMessage" class="alert alert-danger failed">{{ errorMessage }}</div>
